@@ -10,3 +10,16 @@ describe("Command class", function() {
   });
 
 });
+
+// Test 2
+it("constructor sets command type", function() {
+  let command = new Command('STATUS_CHECK');
+  expect(command.commandType).toEqual('STATUS_CHECK');
+});
+
+// Test 3
+it("constructor sets a value passed in as the 2nd argument", function() {
+  let command = new Command('MOVE', 20);
+  expect(command.value).toEqual(20);
+});
+
