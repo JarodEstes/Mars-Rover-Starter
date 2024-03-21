@@ -12,9 +12,11 @@ describe("Message Class", function() {
     });
 
     // test 5
-    test("Constructor sets name", function() {
-        let message =  new Message('New message');
-        expect(message.name).toEqual('New message');
+    test("Constructor sets the name", function() {
+        // mAKES A message class object
+        let aMessage =  new Message('New message');
+        // expects the name property within that message object has the value of "New Message"
+        expect(aMessage.name).toEqual('New message');
     });
 
     // test 6

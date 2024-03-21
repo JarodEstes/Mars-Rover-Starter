@@ -34,7 +34,7 @@ test("response returned by receiveMessage includes two results if two commands a
   });
 
   //test 10
-  it("responds correctly to status check command", function() {
+  test("responds correctly to status check command", function() {
     let rover = new Rover(98382);
     let commands = [new Command('STATUS_CHECK')];
     let roverInfo = {mode: (rover.mode), generatorWatts: (rover.generatorWatts), position: (rover.position)};
@@ -44,7 +44,7 @@ test("response returned by receiveMessage includes two results if two commands a
   });
 
   //test 11
-  it("responds correctly to mode change command", function() {
+  test("responds correctly to mode change command", function() {
     let commands = [new Command('MODE_CHANGE', 'LOW_POWER')];
     let message = new Message('Changing mode to LOW_POWER', commands);
     let rover = new Rover(98382);
@@ -53,7 +53,7 @@ test("response returned by receiveMessage includes two results if two commands a
   });
 
   //test 12
-  it("responds with false completed value when attempting to move in LOW_POWER mode", function() {
+  test("responds with false completed value when attempting to move in LOW_POWER mode", function() {
     let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('MOVE', 2000)];
     let message = new Message('Unable to move while at LOW_POWER mode', commands);
     let rover = new Rover(98382);
@@ -62,11 +62,14 @@ test("response returned by receiveMessage includes two results if two commands a
   });
 
   //test 13
-  it("responds with position for move command", function() {
+  test("responds with position for move command", function() {
+    // these lines create commands, a mewssage, and a rofe
     let commands = [new Command('MOVE', 2000)];
     let message = new Message('Moving to position 2000', commands);
     let rover = new Rover(98382);
+    // this records rthe response when a message is passed into the rover function
     let response = rover.receiveMessage(message);
+    // checking that the roverse position is the same as the command value 
     expect(rover.position).toEqual(2000);
   });
 
